@@ -16,7 +16,7 @@ qt_add_executable(appadmobmanager
     android/AndroidManifest.xml
     android/src/com/AdEventHandlers.java
     admobbridge.h admobbridge.cpp
-    android/src/mock-google-services.json
+    android/src/google-services.json
 )
 
 #qt_add_qml_module(apptesting
