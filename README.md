@@ -117,6 +117,15 @@ You need to update the BannerAd id and Interstitial ad Id in admobbridge.cpp wit
     QString bannerAdId = "ca-app-pub-3940256099942544/6300978111";
     QString interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
   ```
+Update the build.gradle file with below information.
+  ```sh
+  dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'com.google.android.gms:play-services-ads:23.1.0'
+    implementation 'com.google.firebase:firebase-ads:23.1.0'
+}
+ ```
 
 ### Installation
 
