@@ -124,7 +124,7 @@ To get a local copy up and running follow these simple example steps.
     implementation 'androidx.core:core:1.13.1'
     implementation 'com.google.android.gms:play-services-ads:23.1.0'
     implementation 'com.google.firebase:firebase-ads:23.1.0'
-}
+  }
  ```
 
 ### Installation
