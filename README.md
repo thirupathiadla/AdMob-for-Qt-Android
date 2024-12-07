@@ -29,9 +29,6 @@
 
 <h3 align="center">AdMob for Qt for Android</h3>
   <p align="center">
-    <br />
-    <br />
-    <br />
   </p>
 </div>
 
