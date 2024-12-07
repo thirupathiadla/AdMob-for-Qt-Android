@@ -100,8 +100,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Download all the content and open the content in QT Creator.
+Select the Kit Adnroid At6.8.0 Clang x86_64
 
 ### Prerequisites
 
