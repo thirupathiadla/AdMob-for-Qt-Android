@@ -126,6 +126,7 @@ Select the Kit Adnroid Qt6.8.0 Clang x86_64
     implementation 'com.google.firebase:firebase-ads:23.1.0'
   }
  ```
+* replace mock-google-services.json in android/src directory with your own json file.
 
 ### Installation
 
