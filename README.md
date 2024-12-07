@@ -19,9 +19,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="git@github.com:thirupathiadla/AdMob-for-Qt-Android.git">
