@@ -42,7 +42,7 @@
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="git@github.com:thirupathiadla/AdMob-for-Qt-Android.git">View Demo</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
@@ -132,7 +132,7 @@ You need to update the BannerAd id and Interstitial ad Id in admobbridge.cpp wit
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git@github.com:thirupathiadla/AdMob-for-Qt-Android.git
    ```
 3. Install NPM packages
    ```sh
