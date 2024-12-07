@@ -28,8 +28,6 @@
 Download all the content and open the content in QT Creator.
 Select the Kit Adnroid Qt6.8.0 Clang x86_64
 
-### Prerequisites
-
 
  * You need to update AndroidManifest.xml with your app id.
   ```sh
