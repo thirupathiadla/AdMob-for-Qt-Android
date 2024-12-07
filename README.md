@@ -114,10 +114,11 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+You need to update the BannerAd id and Interstitial ad Id in admobbridge.cpp with your own ids.
 * npm
   ```sh
-  npm install npm@latest -g
+    QString bannerAdId = "ca-app-pub-3940256099942544/6300978111";
+    QString interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
   ```
 
 ### Installation
