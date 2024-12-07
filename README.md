@@ -114,8 +114,14 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+You need to update AndroidManifest.xml with your app id.
+ * App id
+  ```sh
+   <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-3940256099942544~3347511713"/>
+  ```
+
 You need to update the BannerAd id and Interstitial ad Id in admobbridge.cpp with your own ids.
-* npm
+* ad ids
   ```sh
     QString bannerAdId = "ca-app-pub-3940256099942544/6300978111";
     QString interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
