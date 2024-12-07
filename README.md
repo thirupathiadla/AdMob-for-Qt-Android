@@ -36,15 +36,10 @@
 </div>
 
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 AdMob Manager is a sample project that demonstrates how to integrate Google AdMob ads into a Qt Android Application using native Java code and the QJniObject class. This project supports both Banner Ads and Interstitial Ads, allowing seamless ad display management directly from C++ code.
-
-
-
 
 
 
