@@ -101,7 +101,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ## Getting Started
 
 Download all the content and open the content in QT Creator.
-Select the Kit Adnroid At6.8.0 Clang x86_64
+Select the Kit Adnroid Qt6.8.0 Clang x86_64
 
 ### Prerequisites
 
