@@ -90,7 +90,6 @@ public class AdEventHandlers {
                                 interstitialAdDismissed = true;   // Set the flag
                                 loadInterstitialAd(activity, interstitialAdId);
                                 releaseWakeLock();  // Release wake lock when ad is dismissed
-                                notifyInterstitialAdDismissed();
                             }
 
                             @Override
@@ -133,6 +132,7 @@ public class AdEventHandlers {
             public void run() {
                 if
                     (mInterstitialAd != null) {
+                    interstitialAdDismissed = false;
                     mInterstitialAd.show(activity);
                     acquireWakeLock(activity);
                 }
@@ -143,12 +143,15 @@ public class AdEventHandlers {
         });
     }
 
-    public boolean isInterstitialAdDismissed() {
+    public static boolean isInterstitialAdDismissed() {
         return interstitialAdDismissed;
     }
 
-    public void resetInterstitialAdDismissedFlag() {
-        interstitialAdDismissed = false;
+    public static void resetInterstitialAdDismissedFlag() {
+        new Handler(Looper.getMainLooper()).post(() -> {
+            interstitialAdDismissed = false;
+            Log.d(TAG, "Interstitial Ad Dismissed Flag Reset.");
+        });
     }
 
     public boolean isInterstitialAdLoaded(){
@@ -263,7 +266,5 @@ public class AdEventHandlers {
             Log.e(TAG, "Banner AdView is either null or not added to the layout.");
         }
     }
-
-    public static native void notifyInterstitialAdDismissed();
 
 }
