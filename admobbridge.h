@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QJniObject>
+#include <QTimer>
 
 class AdMobBridge: public QWidget
 {
@@ -13,13 +14,13 @@ public:
 
     explicit AdMobBridge(QWidget *parent = nullptr);
 
-    void registerNativeMethod();
     static void onInterstitialAdDismissed();
 
 private slots:
     void onShowBannerAdClicked();
     void onShowInterstitialAdClicked();
     void onHideBannerAdClicked();
+    void checkInterstitialAdDismissed();
 
 signals:
     void interstitialAdDismissed();
@@ -39,6 +40,8 @@ private:
     QPushButton *hideBannerAdButton;
     QVBoxLayout *layout;
     QJniObject activity;
+
+    QTimer *checkAdDismissedTimer;
 };
 
 #endif // ADMOBBRIDGE_H

@@ -8,7 +8,7 @@ AdMobBridge::AdMobBridge(QWidget *parent) : QWidget(parent) {
     // Cache Activity
     cacheActivity();
 
-    registerNativeMethod();
+    //registerNativeMethod();
 
     QString bannerAdId = "ca-app-pub-3940256099942544/6300978111";
     QString interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
@@ -16,6 +16,10 @@ AdMobBridge::AdMobBridge(QWidget *parent) : QWidget(parent) {
     setupBannerAd(bannerAdId);
     loadBannerAd();
     loadInterstitialAd(interstitialAdId);
+
+    // Initialize the Timer
+    checkAdDismissedTimer = new QTimer(this);
+    connect(checkAdDismissedTimer, &QTimer::timeout, this, &AdMobBridge::checkInterstitialAdDismissed);
 
     // Create Buttons
     interstitialAdButton = new QPushButton("Show Interstitial Ad", this);
@@ -54,15 +58,6 @@ AdMobBridge::AdMobBridge(QWidget *parent) : QWidget(parent) {
     interstitialAdButton->setGeometry(140, 350, 200, 50); // Positioned below the banner buttons
 }
 
-void AdMobBridge::registerNativeMethod()
-{
-    const JNINativeMethod methods[] = {{"notifyInterstitialAdDismissed", "()V", reinterpret_cast<void *>(AdMobBridge::onInterstitialAdDismissed)}};
-
-    QJniEnvironment env;
-    env.registerNativeMethods("com/AdEventHandlers", methods, 1);
-
-}
-
 void AdMobBridge::onInterstitialAdDismissed()
 {
     qDebug()<<"From Qt C++, Interstitial Ad is Dismissed";
@@ -83,6 +78,39 @@ void AdMobBridge::onShowInterstitialAdClicked()
 void AdMobBridge::onHideBannerAdClicked()
 {
     hideBannerAd();
+}
+
+void AdMobBridge::checkInterstitialAdDismissed()
+{
+    if (!activity.isValid()) {
+        qWarning() << "Activity is invalid.";
+        return;
+    }
+
+    bool adDismissed = QJniObject::callStaticMethod<jboolean>(
+        "com/AdEventHandlers",
+        "isInterstitialAdDismissed",
+        "()Z"
+        );
+
+    if (adDismissed) {
+        int num = 1;
+        qDebug() << "Interstitial Ad Dismissed! "<<num;
+
+        // Stop the timer after detecting dismissal
+        checkAdDismissedTimer->stop();
+
+        // Reset the interstitial ad dismissed flag in Java
+        //QJniObject::callStaticMethod<void>(
+        //    "com/AdEventHandlers",
+        //    "resetInterstitialAdDismissedFlag",
+        //    "()V"
+        //    );
+
+        // Take any required action
+        QMessageBox::information(this, "Ad Status", "Interstitial Ad Dismissed!");
+        num++;
+    }
 }
 
 void AdMobBridge::cacheActivity() {
@@ -154,4 +182,9 @@ void AdMobBridge::showInterstitialAd() {
         "(Landroid/app/Activity;)V",
         activity.object()
         );
+
+    // Start the timer if not already running
+    if (!checkAdDismissedTimer->isActive()) {
+        checkAdDismissedTimer->start(2000);  // Check every 2 seconds
+    }
 }
